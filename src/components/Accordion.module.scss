@@ -1,0 +1,16 @@
+.container {
+  border: 1px solid lightgrey;
+  .accordion {
+    &:not(:last-child) {
+      border-bottom: 1px solid lightgrey;
+    }
+    padding: 10px 20px;
+    &:not(.show):hover{
+      cursor: pointer;
+      background-color: lightgrey;
+    }
+    .inner{
+      display: none;
+    }
+  }
+}
