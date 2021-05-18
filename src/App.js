@@ -1,10 +1,10 @@
+import Header from './layout/Header';
+
 import './App.module.scss';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Detail View</h1>
-      </header>
+      <Header></Header>
     </div>
   );
 }
