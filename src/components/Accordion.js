@@ -5,13 +5,14 @@ function Accordion(props){
   // Create array from object
   for (const key in dataset){
     const movie = {
+      key: key,
       ...dataset[key]
     }
     movies.push(movie);
   }
 
   return <div>{movies.map(movie => {
-    return <div>{movie.display_title}</div>;
+    return <div key={movie.key}>{movie.display_title}</div>;
   })}</div>
 }
 
