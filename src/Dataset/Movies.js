@@ -3,7 +3,7 @@ import Accordion from "../components/Accordion";
 
 function DatasetMovies() {
   /**
-   * URL To API: https://api.nytimes.com/svc/movies/v2/reviews/picks.json?api-key=hMcGn50QL7EcGmLhM0SQkLf8ftLSvXMA
+   * URL To API: https://api.nytimes.com/svc/movies/v2/reviews/picks.json
    */
 
   const [isLoading, setIsLoading] = useState(true);
