@@ -8,6 +8,7 @@ function App() {
     <div className="App">
       <Header></Header>
       <Section>
+        <h1>Top 20 Movies</h1>
         <DatasetMovies></DatasetMovies>
       </Section>
     </div>
