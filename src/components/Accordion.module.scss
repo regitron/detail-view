@@ -1,16 +1,26 @@
-.container {
+.accordion {
   border: 1px solid lightgrey;
-  .accordion {
+  .item {
     &:not(:last-child) {
       border-bottom: 1px solid lightgrey;
     }
+    .inner {
+      padding: 10px 20px;
+      display: none;
+      &.show {
+        display: block;
+      }
+    }
+  }
+  .title {
     padding: 10px 20px;
-    &:not(.show):hover{
+    user-select: none;
+    &:hover{
       cursor: pointer;
       background-color: lightgrey;
-    }
-    .inner{
-      display: none;
+      span{
+        text-decoration: underline;
+      }
     }
   }
 }

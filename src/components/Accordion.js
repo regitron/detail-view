@@ -1,7 +1,7 @@
 import classes from "./Accordion.module.scss";
+import { useState } from "react";
 
 function Accordion(props) {
-  
   const dataset = props.dataset;
   const movies = [];
 
@@ -15,17 +15,26 @@ function Accordion(props) {
   }
 
   return (
-    <div className={classes.container}>
+    <div className={classes.accordion}>
       {movies.map((movie) => {
-        return (
-          <div key={movie.key} className={classes.accordion}>
-            {movie.display_title}
-            <div className={classes.inner}>
-              <p>Tabs goes here</p>
-            </div>
-          </div>
-        );
+        return <AccordionItem item={movie} key={movie.key}></AccordionItem>;
       })}
+    </div>
+  );
+}
+
+function AccordionItem(props) {
+  const movie = props.item;
+  const [isHidden, setIsHidden] = useState(true);
+  function toggleItem() {
+    isHidden ? setIsHidden(false) : setIsHidden(true);
+  }
+  return (
+    <div key={movie.key} className={classes.item} onClick={toggleItem}>
+      <div className={classes.title}>#{parseInt(movie.key)+1} <span>{movie.display_title}</span></div>
+      <div className={isHidden ? classes.inner : classes.inner + ' ' + classes.show}>
+        <p>Tabs goes here</p>
+      </div>
     </div>
   );
 }
