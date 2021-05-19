@@ -27,6 +27,9 @@
     }
   }
   .tab {
+    .pills{
+      white-space: nowrap;
+    }
     .pill {
       border: 1px solid lightgrey;
       padding: 7px 15px;
