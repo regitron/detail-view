@@ -1,0 +1,46 @@
+.pills{
+  white-space: nowrap;
+}
+.pill {
+  border: 1px solid lightgrey;
+  padding: 7px 15px;
+  display: inline-block;
+  z-index: 1;
+  margin-bottom: -1px;
+  &.active {
+    border-bottom: 1px solid white;
+  }
+  &:not(:first-of-type) {
+    margin-left: -1px;
+  }
+  &:first-of-type {
+    margin-left: 20px;
+    border-top-left-radius: 3px;
+  }
+  &:last-of-type{
+    border-top-right-radius: 3px;
+  }
+  &:hover {
+    cursor: pointer;
+    &:not(.active) {
+      background-color: whitesmoke;
+    }
+  }
+}
+
+.contents {
+  border-top: 1px solid lightgrey;
+}
+.content {
+  display: none;
+  align-items: center;
+  padding-top: 20px;
+
+  img {
+    float: left;
+    margin-right: 20px;
+  }
+  &.active{
+    display: flex;
+  }
+}
