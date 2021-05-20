@@ -1,5 +1,6 @@
 .pills{
   white-space: nowrap;
+  border-bottom: 1px solid lightgrey;
 }
 .pill {
   border: 1px solid lightgrey;
@@ -28,9 +29,6 @@
   }
 }
 
-.contents {
-  border-top: 1px solid lightgrey;
-}
 .content {
   display: none;
   align-items: center;
