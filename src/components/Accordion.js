@@ -1,5 +1,5 @@
 import classes from "./Accordion.module.scss";
-import { createRef, useState } from "react";
+import { createRef, useState, useEffect } from "react";
 import { TabContextProvider, TabPills, TabContent } from "./Tabs";
 
 function Accordion(props) {
@@ -15,13 +15,20 @@ function Accordion(props) {
     movies.push(movie);
   }
 
+  const [openAllAccordion, setOpenAllAccordion] = useState(false);
+  function openAll() {
+    setOpenAllAccordion((openAllAccordion) => !openAllAccordion);
+  }
+
   return (
     <div className={classes.outer}>
-      <span className={classes.expand}>Expand all</span>
+      <span className={classes.expand} onClick={openAll}>
+        {openAllAccordion ? "Close all" : "Expand all"}
+      </span>
 
       <div className={classes.accordion}>
         {movies.map((movie) => {
-          return <AccordionItem item={movie} key={movie.key}></AccordionItem>;
+          return <AccordionItem item={movie} key={movie.key} openAllAccordion={openAllAccordion}></AccordionItem>;
         })}
       </div>
     </div>
@@ -33,8 +40,12 @@ function AccordionItem(props) {
   const movie = props.item;
   const [isHidden, setIsHidden] = useState(true);
   function toggleItem() {
-    isHidden ? setIsHidden(false) : setIsHidden(true);
+      isHidden ? setIsHidden(false) : setIsHidden(true);
   }
+  useEffect(() => {
+      setIsHidden(!props.openAllAccordion);
+  }, [props.openAllAccordion])
+  
 
   const ref = createRef();
   // For accessibility
