@@ -5,7 +5,7 @@ import { createContext, useContext, useState } from "react";
 // Create context between tab and content
 const TabContext = createContext({
   currentTab: 0,
-  changeTab: (index) => {},
+  changeTab: () => {},
 });
 
 export function TabContextProvider(props) {
@@ -27,7 +27,7 @@ export function TabPills(props) {
   const changeTab = tabCtx.changeTab;
   const currentTab = tabCtx.currentTab;
   const labels = props.labels;
-
+  
   // For accessibility
   const handleKeyPress = (event) => {
     event.preventDefault();

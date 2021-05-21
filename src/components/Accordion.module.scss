@@ -27,3 +27,16 @@
     }
   }
 }
+.expand {
+  margin-left: auto;
+  margin-bottom: 10px;
+  &:hover{
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+.outer {
+  display: flex;
+  flex-direction: column;
+}

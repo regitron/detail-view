@@ -16,10 +16,14 @@ function Accordion(props) {
   }
 
   return (
-    <div className={classes.accordion}>
-      {movies.map((movie) => {
-        return <AccordionItem item={movie} key={movie.key}></AccordionItem>;
-      })}
+    <div className={classes.outer}>
+      <span className={classes.expand}>Expand all</span>
+
+      <div className={classes.accordion}>
+        {movies.map((movie) => {
+          return <AccordionItem item={movie} key={movie.key}></AccordionItem>;
+        })}
+      </div>
     </div>
   );
 }
@@ -31,7 +35,6 @@ function AccordionItem(props) {
   function toggleItem() {
     isHidden ? setIsHidden(false) : setIsHidden(true);
   }
-
 
   const ref = createRef();
   // For accessibility
