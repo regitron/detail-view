@@ -1,5 +1,5 @@
 import classes from "./Accordion.module.scss";
-import { useState } from "react";
+import { createRef, useState } from "react";
 import { TabContextProvider, TabPills, TabContent } from "./Tabs";
 
 function Accordion(props) {
@@ -32,15 +32,20 @@ function AccordionItem(props) {
     isHidden ? setIsHidden(false) : setIsHidden(true);
   }
 
+
+  const ref = createRef();
+  // For accessibility
   const handleKeyPress = (event) => {
     event.preventDefault();
-    if (event.keyCode === 0) {
+
+    // Keycode 0 is spacebar
+    if (event.keyCode === 0 && document.activeElement === ref.current) {
       toggleItem();
     }
   };
 
   return (
-    <div key={movie.key} className={classes.item} tabIndex={1} onKeyPress={handleKeyPress}>
+    <div ref={ref} key={movie.key} className={classes.item} tabIndex={1} onKeyPress={handleKeyPress}>
       <div className={classes.title} onClick={toggleItem}>
         #{parseInt(movie.key) + 1} <span>{movie.display_title}</span>
         <small>&nbsp;{isHidden ? "(Click to open)" : "(Click to close)"}</small>
@@ -58,7 +63,7 @@ function AccordionItem(props) {
           </TabContent>
           <TabContent index={1}>
             <p>
-              <a href={movie.link.url} target="_blank" rel="noreferrer">
+              <a href={movie.link.url} target="_blank" rel="noreferrer" tabIndex={1}>
                 {movie.link.suggested_link_text}
               </a>
             </p>

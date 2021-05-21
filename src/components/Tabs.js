@@ -27,6 +27,8 @@ export function TabPills(props) {
   const changeTab = tabCtx.changeTab;
   const currentTab = tabCtx.currentTab;
   const labels = props.labels;
+
+  // For accessibility
   const handleKeyPress = (event) => {
     event.preventDefault();
     if(event.keyCode === 0 || event.key === " "){
