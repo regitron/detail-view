@@ -20,9 +20,19 @@ function Accordion(props) {
     setOpenAllAccordion((openAllAccordion) => !openAllAccordion);
   }
 
+  const ref = createRef();
+  // For accessibility
+  const handleKeyPress = (event) => {
+    event.preventDefault();
+    // Keycode 0 is spacebar
+    if (event.keyCode === 0 && document.activeElement === ref.current) {
+      openAll();
+    }
+  };
+
   return (
     <div className={classes.outer}>
-      <span className={classes.expand} onClick={openAll}>
+      <span ref={ref} className={classes.expand} onClick={openAll} tabIndex={1} onKeyPress={handleKeyPress}>
         {openAllAccordion ? "Close all" : "Expand all"}
       </span>
 
@@ -71,7 +81,7 @@ function AccordionItem(props) {
             <img alt={movie.headline} src={movie.multimedia.src} />
             <div>
               <h3>{movie.display_title}</h3>
-              <small>Byline: {movie.byline}</small>
+              <small>Author: {movie.byline}</small>
               <p>{movie.summary_short}</p>
             </div>
           </TabContent>
